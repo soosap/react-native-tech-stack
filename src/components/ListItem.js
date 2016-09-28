@@ -18,7 +18,11 @@ class ListItem extends Component {
 		const { expanded, library } = this.props;
 
 		if (expanded) {
-			return <Text>{library.description}</Text>;
+			return (
+				<CardSection>
+					<Text style={styles.description}>{library.description}</Text>
+				</CardSection>
+			);
 		}
 	}
 
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
 	title: {
 		fontSize: 18,
 		paddingLeft: 15,
+	},
+	description: {
+		flex: 1,
+		paddingLeft: 15,
+		paddingRight: 15,
 	},
 });
 
