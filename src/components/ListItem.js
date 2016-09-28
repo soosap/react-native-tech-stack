@@ -11,15 +11,14 @@ class ListItem extends Component {
 			title: PropTypes.string.isRequired,
 			description: PropTypes.string.isRequired,
 		}),
-		selectedLibraryId: PropTypes.number,
+		expanded: PropTypes.bool.isRequired,
 	}
 
 	renderDescription = () => {
-		const { library, selectedLibraryId } = this.props;
-		if (library.id === selectedLibraryId) {
-			return (
-				<Text>{library.description}</Text>
-			);
+		const { expanded, library } = this.props;
+
+		if (expanded) {
+			return <Text>{library.description}</Text>;
 		}
 	}
 
@@ -48,8 +47,8 @@ const styles = StyleSheet.create({
 	},
 });
 
-const mapStateToProps = state => ({
-	selectedLibraryId: state.selectedLibraryId,
+const mapStateToProps = (state, ownProps) => ({
+	expanded: state.selectedLibraryId === ownProps.library.id,
 });
 
 export default connect(mapStateToProps, actions)(ListItem);
