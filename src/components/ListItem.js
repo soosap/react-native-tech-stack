@@ -14,6 +14,15 @@ class ListItem extends Component {
 		selectedLibraryId: PropTypes.number,
 	}
 
+	renderDescription = () => {
+		const { library, selectedLibraryId } = this.props;
+		if (library.id === selectedLibraryId) {
+			return (
+				<Text>{library.description}</Text>
+			);
+		}
+	}
+
 	render() {
 		const { id, title } = this.props.library;
 	
@@ -25,6 +34,7 @@ class ListItem extends Component {
 					<CardSection>
 						<Text style={styles.title}>{title}</Text>
 					</CardSection>
+					{this.renderDescription()}
 				</View>
 			</TouchableWithoutFeedback>
 		);
