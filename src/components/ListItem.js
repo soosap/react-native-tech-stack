@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, StyleSheet, TouchableWithoutFeedback, LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
 
 import { CardSection } from './common';
@@ -12,6 +12,10 @@ class ListItem extends Component {
 			description: PropTypes.string.isRequired,
 		}),
 		expanded: PropTypes.bool.isRequired,
+	}
+
+	componentWillUpdate() {
+		LayoutAnimation.spring();
 	}
 
 	renderDescription = () => {
